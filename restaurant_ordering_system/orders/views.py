@@ -3,8 +3,12 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 
 # Create your views here.
+
+def main_page(request):
+    return HttpResponse("<h1>Наш супер-пупер модный сайт для ресторана!!!<h1>")
+
 def stages(request):
-    data = {'title': 'Главная страница'}
+    data = {'title': 'Этапы обработки заказа'}
     return render(request, 'orders/stages.html', data)
 
 def cook(request):

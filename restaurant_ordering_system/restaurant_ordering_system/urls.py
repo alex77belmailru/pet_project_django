@@ -21,7 +21,7 @@ from orders.views import page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('orders/', include('orders.urls')),
+    path('', include('orders.urls')),
 ]
 
 handler404 = page_not_found
