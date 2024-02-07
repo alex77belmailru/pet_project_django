@@ -2,6 +2,9 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
+from orders.models import Order
+
+
 # Create your views here.
 
 def main_page(request):
@@ -17,5 +20,13 @@ def cook(request):
 def deliveryman(request):
     return HttpResponse("<h1>Заказы, которые надо доставить</h1>")
 
+def orders_man(request):
+    order = Order.objects.create(
+        name='Егор',
+        order='Рис с редиской',
+        delivery=False,
+        ready=True
+    )
+    return HttpResponse('Информация добавлена')
 def page_not_found(request, exception):
     return HttpResponseNotFound("<h1>Страница не найдена</h1>")
