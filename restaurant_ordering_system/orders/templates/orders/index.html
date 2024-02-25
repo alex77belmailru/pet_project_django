@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p><a href ="{% url 'cook' %}">Приготовление заказа</a></p>
+<p><a href="{% url 'cook' %}">Приготовление заказа</a></p>
 <br>
-<p><a href ="{% url 'delivery' %}">Доставка заказа</a></p>
+<p><a href="{% url 'delivery' %}">Доставка заказа</a></p>
+<br>
+{% if user.is_authenticated %}
+{{ user }}
+<a href="{% url 'users:logout' %}">Выйти</a>
+<a href="{% url 'users:profile' %}">Профиль</a>
+{% else %}
+<a href="{% url 'users:login' %}">Войти</a>
+{% endif %}
 {% endblock %}

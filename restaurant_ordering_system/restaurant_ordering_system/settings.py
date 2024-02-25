@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'orders.apps.OrdersConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -120,12 +122,26 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'C:\\Users\\mikol\\PycharmProjects\\pet_project1\\restaurant_ordering_system\\orders\\static')
-
-]
+STATICFILES_DIRS = (
+    BASE_DIR / 'static',
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# mailing service
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'django-test-alex77bel@yandex.ru'
+EMAIL_HOST_PASSWORD = 'nqlxykqluoiwvzwd'
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+
+
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
